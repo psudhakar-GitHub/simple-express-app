@@ -3,22 +3,8 @@ const serverless = require("serverless-http");
 const app = express();
 const router = express.Router();
 
-let records = [];
-
 router.get("/", (req, res) => {
   res.send("App is running..");
-});
-
-router.post("/add", (req, res) => {
-  res.send("New record added.");
-});
-
-router.delete("/", (req, res) => {
-  res.send("Deleted existing record");
-});
-
-router.put("/", (req, res) => {
-  res.send("Updating existing record");
 });
 
 router.get("/demo", (req, res) => {
@@ -38,6 +24,6 @@ router.get("/demo", (req, res) => {
   ]);
 });
 
-app.use("/.netlify/functions/api", router);
+app.use("/api/", router);
 
 module.exports.handler = serverless(app);
